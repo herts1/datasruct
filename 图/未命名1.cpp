@@ -160,7 +160,25 @@ void DestroyAdj(AdjGraph *&G)
 }
 
 
+int visited[MAXV]={0};
+void DFS(AdjGraph *G,int v){
+	ArcNode *p;
+	visited[v]=1;
+	printf("%d",v);
+	p=G->adjlist[v].firstarc;
+	while(p!=NULL){
+		if(visited[p->adjvex]==0){
+			DFS(G,p->adjvex);
+			p=p->nextarc;
+		}
+	}
+} 
 
+void BFS(AdjGraph *G,int v){
+	int w,i;
+	ArcNode *p;
+	
+}
 
 
 
