@@ -1,5 +1,6 @@
 #include "Graph.h"
 #include<stdio.h>
+#include<stdlib.h> 
 void menu() {
     printf("\n========== 有向图操作菜单 ==========\n");
     printf("1. 建立有向图\n");
