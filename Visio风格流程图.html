@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>电话通话记录查询系统 — Visio 商务流程图</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    background: #e8ecf1;
+    display: flex; justify-content: center; align-items: flex-start;
+    min-height: 100vh; padding: 20px;
+    font-family: "Microsoft YaHei", "PingFang SC", sans-serif;
+  }
+  .container {
+    background: #fff; border-radius: 6px;
+    box-shadow: 0 2px 20px rgba(0,0,0,.12);
+    width: 100%; max-width: 1600px; overflow: hidden;
+  }
+  .title-bar {
+    padding: 14px 24px; border-bottom: 1px solid #dee2e6;
+    font-size: 15px; font-weight: 600; color: #2c3e50;
+    display: flex; align-items: center; gap: 10px;
+  }
+  .title-bar .dot { width: 10px; height: 10px; border-radius: 50%; display: inline-block; }
+  svg { display: block; width: 100%; height: auto; }
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="title-bar">
+    <span class="dot" style="background:#2B579A"></span> Visio 商务流程图 — 电话通话记录查询系统
+  </div>
+  <svg viewBox="0 0 1600 900" xmlns="http://www.w3.org/2000/svg">
+    <defs>
+      <!-- 阴影滤镜 -->
+      <filter id="shadow" x="-5%" y="-5%" width="115%" height="115%">
+        <feDropShadow dx="1" dy="2" stdDeviation="2.5" flood-color="#00000030"/>
+      </filter>
+      <filter id="shadowLite" x="-3%" y="-3%" width="108%" height="108%">
+        <feDropShadow dx="0.6" dy="1.2" stdDeviation="1.5" flood-color="#00000025"/>
+      </filter>
+      <!-- 箭头标记 -->
+      <marker id="arrow" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+        <path d="M0,0 L10,4 L0,8 L2,4 Z" fill="#333"/>
+      </marker>
+      <marker id="arrowBlue" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
+        <path d="M0,0 L10,4 L0,8 L2,4 Z" fill="#2B579A"/>
+      </marker>
+      <!-- 渐变 -->
+      <linearGradient id="gBlue" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#3A6BC5"/>
+        <stop offset="100%" stop-color="#2B579A"/>
+      </linearGradient>
+      <linearGradient id="gGreen" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#EAF4E2"/>
+        <stop offset="100%" stop-color="#D5E8C9"/>
+      </linearGradient>
+      <linearGradient id="gYellow" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0%" stop-color="#FFF8E1"/>
+        <stop offset="100%" stop-color="#FFF2CC"/>
+      </linearGradient>
+    </defs>
+
+    <!-- ============ 背景网格 (Visio 风格参考线) ============ -->
+    <g opacity="0.06">
+      <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+        <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#666" stroke-width="0.5"/>
+      </pattern>
+      <rect x="0" y="0" width="1600" height="900" fill="url(#grid)"/>
+    </g>
+
+    <!-- ================================================================ -->
+    <!--  主程序流程图  Page 1                                            -->
+    <!-- ================================================================ -->
+
+    <!-- 标题 -->
+    <text x="50" y="36" font-size="16" font-weight="700" fill="#2B579A" font-family="Microsoft YaHei, sans-serif">电话通话记录查询系统 — 主程序执行流程</text>
+    <line x1="50" y1="44" x2="360" y2="44" stroke="#2B579A" stroke-width="2"/>
+
+    <!-- ===== 节点坐标定义 ===== -->
+    <!--
+      PinY Visio-style: from top, increasing downward
+      Center X for main trunk: 180
+    -->
+    <!-- 1. 程序开始 (Start) — 蓝色圆角矩形 -->
+    <rect x="80" y="62" width="200" height="42" rx="21" ry="21" fill="url(#gBlue)" stroke="#1E4480" stroke-width="1.5" filter="url(#shadow)"/>
+    <text x="180" y="89" text-anchor="middle" font-size="13" font-weight="700" fill="#fff" font-family="Microsoft YaHei, sans-serif">程序开始</text>
+
+    <!-- 2. 加载客户数据 (Process) — 浅绿圆角矩形 -->
+    <rect x="55" y="135" width="250" height="48" rx="6" ry="6" fill="url(#gGreen)" stroke="#82B366" stroke-width="1.3" filter="url(#shadowLite)"/>
+    <text x="180" y="157" text-anchor="middle" font-size="12" font-weight="600" fill="#2c3e50" font-family="Microsoft YaHei, sans-serif">加载客户数据</text>
+    <text x="180" y="174" text-anchor="middle" font-size="10.5" fill="#555" font-family="Consolas, Microsoft YaHei, sans-serif">load_customers("customers.txt")</text>
+
+    <!-- 3. 加载成功? (Decision) — 黄色菱形 -->
+    <polygon points="180,212 275,255 180,298 85,255" fill="url(#gYellow)" stroke="#C9A831" stroke-width="1.3" filter="url(#shadowLite)"/>
+    <text x="180" y="259" text-anchor="middle" font-size="12.5" font-weight="600" fill="#2c3e50" font-family="Microsoft YaHei, sans-serif">加载成功?</text>
+
+    <!-- 4. 错误退出1 (Start/End) -->
+    <rect x="460" y="233" width="160" height="44" rx="22" ry="22" fill="url(#gBlue)" stroke="#1E4480" stroke-width="1.5" filter="url(#shadow)"/>
+    <text x="540" y="261" text-anchor="middle" font-size="12.5" font-weight="700" fill="#fff" font-family="Microsoft YaHei, sans-serif">输出错误, 退出</text>
+
+    <!-- 5. 加载通话记录 (Process) -->
+    <rect x="55" y="330" width="250" height="48" rx="6" ry="6" fill="url(#gGreen)" stroke="#82B366" stroke-width="1.3" filter="url(#shadowLite)"/>
+    <text x="180" y="352" text-anchor="middle" font-size="12" font-weight="600" fill="#2c3e50" font-family="Microsoft YaHei, sans-serif">加载通话记录</text>
+    <text x="180" y="369" text-anchor="middle" font-size="10.5" fill="#555" font-family="Consolas, Microsoft YaHei, sans-serif">load_calls("calls.txt")</text>
+
+    <!-- 6. 加载成功? (Decision) -->
+    <polygon points="180,407 275,450 180,493 85,450" fill="url(#gYellow)" stroke="#C9A831" stroke-width="1.3" filter="url(#shadowLite)"/>
+    <text x="180" y="454" text-anchor="middle" font-size="12.5" font-weight="600" fill="#2c3e50" font-family="Microsoft YaHei, sans-serif">加载成功?</text>
+
+    <!-- 7. 错误退出2 (Start/End) -->
+    <rect x="460" y="428" width="160" height="44" rx="22" ry="22" fill="url(#gBlue)" stroke="#1E4480" stroke-width="1.5" filter="url(#shadow)"/>
+    <text x="540" y="456" text-anchor="middle" font-size="12.5" font-weight="700" fill="#fff" font-family="Microsoft YaHei, sans-serif">输出错误, 退出</text>
+
+    <!-- 8. 统计通话次数 (Process) -->
+    <rect x="70" y="525" width="220" height="46" rx="6" ry="6" fill="url(#gGreen)" stroke="#82B366" stroke-width="1.3" filter="url(#shadowLite)"/>
+    <text x="180" y="548" text-anchor="middle" font-size="12" font-weight="600" fill="#2c3e50" font-family="Microsoft YaHei, sans-serif">统计通话次数</text>
+    <text x="180" y="563" text-anchor="middle" font-size="10.5" fill="#555" font-family="Consolas, Microsoft YaHei, sans-serif">count_calls()</text>
+
+    <!-- 9. 初始化哈希表 (Process) -->
+    <rect x="55" y="600" width="250" height="50" rx="6" ry="6" fill="url(#gGreen)" stroke="#82B366" stroke-width="1.3" filter="url(#shadowLite)"/>
+    <text x="180" y="622" text-anchor="middle" font-size="12" font-weight="600" fill="#2c3e50" font-family="Microsoft YaHei, sans-serif">初始化哈希表</text>
+    <text x="180" y="641" text-anchor="middle" font-size="10.5" fill="#555" font-family="Consolas, Microsoft YaHei, sans-serif">ch_init(phone_ch) / ch_init(name_ch)</text>
+
+    <!-- 10. 插入哈希表 (Process) -->
+    <rect x="45" y="680" width="270" height="50" rx="6" ry="6" fill="url(#gGreen)" stroke="#82B366" stroke-width="1.3" filter="url(#shadowLite)"/>
+    <text x="180" y="702" text-anchor="middle" font-size="12" font-weight="600" fill="#2c3e50" font-family="Microsoft YaHei, sans-serif">遍历客户, 插入哈希表</text>
+    <text x="180" y="721" text-anchor="middle" font-size="10.5" fill="#555" font-family="Consolas, Microsoft YaHei, sans-serif">ch_insert_phone() / ch_insert_name()</text>
+
+    <!-- 11. 显示菜单 (Process) -->
+    <rect x="80" y="740" width="200" height="44" rx="6" ry="6" fill="url(#gGreen)" stroke="#82B366" stroke-width="1.3" filter="url(#shadowLite)"/>
+    <text x="180" y="763" text-anchor="middle" font-size="12" font-weight="600" fill="#2c3e50" font-family="Microsoft YaHei, sans-serif">显示菜单</text>
+    <text x="180" y="777" text-anchor="middle" font-size="10.5" fill="#555" font-family="Consolas, Microsoft YaHei, sans-serif">print_menu()</text>
+
+    <!-- 12. 读取选择 (Process) -->
+    <rect x="85" y="808" width="190" height="42" rx="6" ry="6" fill="url(#gGreen)" stroke="#82B366" stroke-width="1.3" filter="url(#shadowLite)"/>
+    <text x="180" y="829" text-anchor="middle" font-size="12" font-weight="600" fill="#2c3e50" font-family="Microsoft YaHei, sans-serif">读取用户选择 choice</text>
+
+    <!-- ====== 连线 (正交路径) ====== -->
+
+    <!-- 1→2: 程序开始 → 加载客户数据 -->
+    <line x1="180" y1="104" x2="180" y2="135" stroke="#333" stroke-width="1.3" marker-end="url(#arrow)"/>
+
+    <!-- 2→3: 加载客户数据 → 加载成功? -->
+    <line x1="180" y1="183" x2="180" y2="212" stroke="#333" stroke-width="1.3" marker-end="url(#arrow)"/>
+
+    <!-- 3→4: 加载成功? → 错误退出1 (否) 正交 -->
+    <path d="M 275,255 L 370,255 L 370,255 L 460,255" fill="none" stroke="#333" stroke-width="1.3" marker-end="url(#arrow)"/>
+    <text x="350" y="248" text-anchor="middle" font-size="11" font-weight="600" fill="#c0392b" font-family="Microsoft YaHei, sans-serif">否</text>
+
+    <!-- 3→5: 加载成功? → 加载通话记录 (是) -->
+    <line x1="180" y1="298" x2="180" y2="330" stroke="#333" stroke-width="1.3" marker-end="url(#arrow)"/>
+    <text x="160" y="318" text-anchor="end" font-size="11" font-weight="600" fill="#27ae60" font-family="Microsoft YaHei, sans-serif">是</text>
+
+    <!-- 5→6: 加载通话记录 → 加载成功? -->
+    <line x1="180" y1="378" x2="180" y2="407" stroke="#333" stroke-width="1.3" marker-end="url(#arrow)"/>
+
+    <!-- 6→7: 加载成功? → 错误退出2 (否) 正交 -->
+    <path d="M 275,450 L 370,450 L 370,450 L 460,450" fill="none" stroke="#333" stroke-width="1.3" marker-end="url(#arrow)"/>
+    <text x="350" y="443" text-anchor="middle" font-size="11" font-weight="600" fill="#c0392b" font-family="Microsoft YaHei, sans-serif">否</text>
+
+    <!-- 6→8: 加载成功? → 统计通话次数 (是) -->
+    <line x1="180" y1="493" x2="180" y2="525" stroke="#333" stroke-width="1.3" marker-end="url(#arrow)"/>
+    <text x="160" y="513" text-anchor="end" font-size="11" font-weight="600" fill="#27ae60" font-family="Microsoft YaHei, sans-serif">是</text>
+
+    <!-- 8→9: 统计通话次数 → 初始化哈希表 -->
+    <line x1="180" y1="571" x2="180" y2="600" stroke="#333" stroke-width="1.3" marker-end="url(#arrow)"/>
+
+    <!-- 9→10: 初始化哈希表 → 插入哈希表 -->
+    <line x1="180" y1="650" x2="180" y2="680" stroke="#333" stroke-width="1.3" marker-end="url(#arrow)"/>
+
+    <!-- 10→11: 插入哈希表 → 显示菜单 -->
+    <line x1="180" y1="730" x2="180" y2="740" stroke="#333" stroke-width="1.3" marker-end="url(#arrow)"/>
+
+    <!-- 11→12: 显示菜单 → 读取选择 -->
+    <line x1="180" y1="784" x2="180" y2="808" stroke="#333" stroke-width="1.3" marker-end="url(#arrow)"/>
+
+    <!-- 读取选择 → Switch 决策 (正交：从读取选择右侧到switch菱形左侧) -->
+    <path d="M 275,829 L 320,829 L 320,825 L 320,825" fill="none" stroke="#333" stroke-width="1.3" marker-end="url(#arrow)"/>
+
+    <!-- 13. choice = ? (Switch Decision) — 在读取选择右侧的黄色菱形 -->
+    <polygon points="400,785 480,825 400,865 320,825" fill="url(#gYellow)" stroke="#C9A831" stroke-width="1.3" filter="url(#shadowLite)"/>
+    <text x="400" y="829" text-anchor="middle" font-size="12.5" font-weight="600" fill="#2c3e50" font-family="Microsoft YaHei, sans-serif">choice = ?</text>
+
+    <!-- ================================================================ -->
+    <!--  右侧: Switch 分支区域 (竖向排列)                              -->
+    <!-- ================================================================ -->
+
+    <text x="580" y="36" font-size="16" font-weight="700" fill="#2B579A" font-family="Microsoft YaHei, sans-serif">选择分支</text>
+    <line x1="580" y1="44" x2="660" y2="44" stroke="#2B579A" stroke-width="2"/>
+
+    <!-- Case 1 -->
+    <rect x="580" y="62" width="200" height="50" rx="6" ry="6" fill="url(#gGreen)" stroke="#82B366" stroke-width="1.3" filter="url(#shadowLite)"/>
+    <text x="680" y="80" text-anchor="middle" font-size="10" font-weight="600" fill="#666" font-family="Microsoft YaHei, sans-serif">Case 1</text>
+    <text x="680" y="98" text-anchor="middle" font-size="12" font-weight="600" fill="#2c3e50" font-family="Microsoft YaHei, sans-serif">find_maniac()  查找通话狂人</text>
+
+    <!-- Case 2 -->
+    <rect x="580" y="132" width="200" height="50" rx="6" ry="6" fill="url(#gGreen)" stroke="#82B366" stroke-width="1.3" filter="url(#shadowLite)"/>
+    <text x="680" y="150" text-anchor="middle" font-size="10" font-weight="600" fill="#666" font-family="Microsoft YaHei, sans-serif">Case 2</text>
+    <text x="680" y="168" text-anchor="middle" font-size="12" font-weight="600" fill="#2c3e50" font-family="Microsoft YaHei, sans-serif">find_by_name()  按姓名查询</text>
+
+    <!-- Case 3 -->
+    <rect x="580" y="202" width="200" height="50" rx="6" ry="6" fill="url(#gGreen)" stroke="#82B366" stroke-width="1.3" filter="url(#shadowLite)"/>
+    <text x="680" y="220" text-anchor="middle" font-size="10" font-weight="600" fill="#666" font-family="Microsoft YaHei, sans-serif">Case 3</text>
+    <text x="680" y="238" text-anchor="middle" font-size="12" font-weight="600" fill="#2c3e50" font-family="Microsoft YaHei, sans-serif">find_by_phone()  按手机号查询</text>
+
+    <!-- Case 4 -->
+    <rect x="580" y="272" width="200" height="50" rx="6" ry="6" fill="url(#gGreen)" stroke="#82B366" stroke-width="1.3" filter="url(#shadowLite)"/>
+    <text x="680" y="290" text-anchor="middle" font-size="10" font-weight="600" fill="#666" font-family="Microsoft YaHei, sans-serif">Case 4</text>
+    <text x="680" y="308" text-anchor="middle" font-size="12" font-weight="600" fill="#2c3e50" font-family="Microsoft YaHei, sans-serif">compare_hash_functions()</text>
+
+    <!-- Case 5 -->
+    <rect x="580" y="342" width="200" height="50" rx="6" ry="6" fill="url(#gGreen)" stroke="#82B366" stroke-width="1.3" filter="url(#shadowLite)"/>
+    <text x="680" y="360" text-anchor="middle" font-size="10" font-weight="600" fill="#666" font-family="Microsoft YaHei, sans-serif">Case 5</text>
+    <text x="680" y="378" text-anchor="middle" font-size="12" font-weight="600" fill="#2c3e50" font-family="Microsoft YaHei, sans-serif">compare_collision_methods()</text>
+
+    <!-- Case 0 (退出) -->
+    <rect x="580" y="412" width="200" height="46" rx="23" ry="23" fill="url(#gBlue)" stroke="#1E4480" stroke-width="1.5" filter="url(#shadow)"/>
+    <text x="680" y="432" text-anchor="middle" font-size="10" font-weight="600" fill="#ffd700" font-family="Microsoft YaHei, sans-serif">Case 0</text>
+    <text x="680" y="448" text-anchor="middle" font-size="12" font-weight="700" fill="#fff" font-family="Microsoft YaHei, sans-serif">ch_free() 释放资源, 退出</text>
+
+    <!-- Default -->
+    <rect x="580" y="478" width="200" height="44" rx="6" ry="6" fill="#FFF3CD" stroke="#D39E00" stroke-width="1.3" filter="url(#shadowLite)"/>
+    <text x="680" y="495" text-anchor="middle" font-size="10" font-weight="600" fill="#856404" font-family="Microsoft YaHei, sans-serif">Default</text>
+    <text x="680" y="511" text-anchor="middle" font-size="12" fill="#856404" font-family="Microsoft YaHei, sans-serif">无效输入提示</text>
+
+    <!-- LOOP 汇聚 -->
+    <rect x="580" y="545" width="200" height="48" rx="8" ry="8" fill="#E8EAF6" stroke="#5C6BC0" stroke-width="1.5" stroke-dasharray="5,3" filter="url(#shadowLite)"/>
+    <text x="680" y="567" text-anchor="middle" font-size="12" font-weight="600" fill="#3F51B5" font-family="Microsoft YaHei, sans-serif">循环回菜单</text>
+    <text x="680" y="584" text-anchor="middle" font-size="10" fill="#5C6BC0" font-family="Microsoft YaHei, sans-serif">(返回 print_menu)</text>
+
+    <!-- ====== Switch决策 → 各case (正交总线) ====== -->
+    <!-- 垂直线: switch 决策右侧 → 总线 -->
+    <path d="M 480,825 L 540,825 L 540,87 L 580,87" fill="none" stroke="#333" stroke-width="1.3" marker-end="url(#arrow)"/>
+    <!-- 总线继续向下连接所有case -->
+    <path d="M 540,87 L 540,569" fill="none" stroke="#333" stroke-width="1.3"/>
+    <!-- 总线 → 各case的水平连接 -->
+    <path d="M 540,87 L 580,87" fill="none" stroke="#333" stroke-width="1.3" marker-end="url(#arrow)"/>
+    <path d="M 540,157 L 580,157" fill="none" stroke="#333" stroke-width="1.3" marker-end="url(#arrow)"/>
+    <path d="M 540,227 L 580,227" fill="none" stroke="#333" stroke-width="1.3" marker-end="url(#arrow)"/>
+    <path d="M 540,297 L 580,297" fill="none" stroke="#333" stroke-width="1.3" marker-end="url(#arrow)"/>
+    <path d="M 540,367 L 580,367" fill="none" stroke="#333" stroke-width="1.3" marker-end="url(#arrow)"/>
+    <path d="M 540,435 L 580,435" fill="none" stroke="#333" stroke-width="1.3" marker-end="url(#arrow)"/>
+    <path d="M 540,500 L 580,500" fill="none" stroke="#333" stroke-width="1.3" marker-end="url(#arrow)"/>
+
+    <!-- 各case → LOOP汇总 -->
+    <path d="M 780,87 L 820,87 L 820,569 L 780,569" fill="none" stroke="#333" stroke-width="1.3" marker-end="url(#arrow)"/>
+    <path d="M 780,157 L 820,157 L 820,569" fill="none" stroke="#333" stroke-width="1.3"/>
+    <path d="M 780,227 L 820,227 L 820,569" fill="none" stroke="#333" stroke-width="1.3"/>
+    <path d="M 780,297 L 820,297 L 820,569" fill="none" stroke="#333" stroke-width="1.3"/>
+    <path d="M 780,367 L 820,367 L 820,569" fill="none" stroke="#333" stroke-width="1.3"/>
+    <path d="M 780,435 L 820,435 L 820,569" fill="none" stroke="#333" stroke-width="1.3"/>
+    <path d="M 780,500 L 820,500 L 820,569" fill="none" stroke="#333" stroke-width="1.3"/>
+
+    <!-- LOOP → 回到 print_menu (正交虚线，从右侧绕回) -->
+    <path d="M 580,569 L 520,569 L 520,762 L 280,762" fill="none" stroke="#3F51B5" stroke-width="1.5" stroke-dasharray="7,4" marker-end="url(#arrowBlue)"/>
+
+    <!-- 标签 -->
+    <text x="525" y="440" text-anchor="end" font-size="9.5" fill="#555" font-family="Microsoft YaHei, sans-serif" transform="rotate(-90, 525, 440)">分支总线</text>
+
+    <!-- ================================================================ -->
+    <!--  系统架构总览 (左下区域)                                        -->
+    <!-- ================================================================ -->
+    <text x="50" y="470" font-size="16" font-weight="700" fill="#2B579A" font-family="Microsoft YaHei, sans-serif">系统架构总览</text>
+    <line x1="50" y1="478" x2="180" y2="478" stroke="#2B579A" stroke-width="2"/>
+
+    <!-- 数据层 -->
+    <rect x="50" y="495" width="190" height="80" rx="4" fill="#E3F2FD" stroke="#1E88E5" stroke-width="1.3"/>
+    <text x="145" y="518" text-anchor="middle" font-size="11.5" font-weight="700" fill="#1565C0" font-family="Microsoft YaHei, sans-serif">📁 数据层</text>
+    <text x="145" y="540" text-anchor="middle" font-size="10.5" fill="#333" font-family="Microsoft YaHei, sans-serif">customers.txt (30条)</text>
+    <text x="145" y="558" text-anchor="middle" font-size="10.5" fill="#333" font-family="Microsoft YaHei, sans-serif">calls.txt (46条)</text>
+
+    <!-- 加载层 -->
+    <rect x="50" y="595" width="190" height="65" rx="4" fill="#E8F5E9" stroke="#43A047" stroke-width="1.3"/>
+    <text x="145" y="615" text-anchor="middle" font-size="11.5" font-weight="700" fill="#2E7D32" font-family="Microsoft YaHei, sans-serif">📥 加载层</text>
+    <text x="145" y="635" text-anchor="middle" font-size="10.5" fill="#333" font-family="Microsoft YaHei, sans-serif">load_customers / load_calls</text>
+    <text x="145" y="652" text-anchor="middle" font-size="10" fill="#666" font-family="Microsoft YaHei, sans-serif">→ Customer[] / call[][]</text>
+
+    <!-- 哈希索引层 -->
+    <rect x="280" y="595" width="190" height="65" rx="4" fill="#FFF8E1" stroke="#F9A825" stroke-width="1.3"/>
+    <text x="375" y="615" text-anchor="middle" font-size="11.5" font-weight="700" fill="#E65100" font-family="Microsoft YaHei, sans-serif">🔐 哈希索引层</text>
+    <text x="375" y="635" text-anchor="middle" font-size="10.5" fill="#333" font-family="Microsoft YaHei, sans-serif">phone_ch[] / name_ch[]</text>
+    <text x="375" y="652" text-anchor="middle" font-size="10" fill="#666" font-family="Microsoft YaHei, sans-serif">phone_oa[] / name_oa[]</text>
+
+    <!-- 查询层 -->
+    <rect x="510" y="595" width="170" height="65" rx="4" fill="#FCE4EC" stroke="#E91E63" stroke-width="1.3"/>
+    <text x="595" y="615" text-anchor="middle" font-size="11.5" font-weight="700" fill="#AD1457" font-family="Microsoft YaHei, sans-serif">🔍 查询层</text>
+    <text x="595" y="635" text-anchor="middle" font-size="10.5" fill="#333" font-family="Microsoft YaHei, sans-serif">find_maniac/name/phone</text>
+
+    <!-- 分析层 -->
+    <rect x="510" y="495" width="170" height="80" rx="4" fill="#EDE7F6" stroke="#5E35B1" stroke-width="1.3"/>
+    <text x="595" y="518" text-anchor="middle" font-size="11.5" font-weight="700" fill="#4527A0" font-family="Microsoft YaHei, sans-serif">📊 分析层</text>
+    <text x="595" y="540" text-anchor="middle" font-size="10.5" fill="#333" font-family="Microsoft YaHei, sans-serif">compare_hash_functions</text>
+    <text x="595" y="558" text-anchor="middle" font-size="10.5" fill="#333" font-family="Microsoft YaHei, sans-serif">compare_collision_methods</text>
+
+    <!-- 数据层 → 加载层 -->
+    <line x1="145" y1="575" x2="145" y2="595" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+    <!-- 加载层 → 哈希索引层 -->
+    <line x1="240" y1="627" x2="280" y2="627" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+    <!-- 哈希索引层 → 查询层 -->
+    <line x1="470" y1="627" x2="510" y2="627" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+    <!-- 哈希索引层 → 分析层 -->
+    <path d="M 470,615 L 490,615 L 490,535 L 510,535" fill="none" stroke="#333" stroke-width="1.2" marker-end="url(#arrow)"/>
+
+
+    <!-- ================================================================ -->
+    <!--  核心算法详图 (底部区域)                                        -->
+    <!-- ================================================================ -->
+    <line x1="50" y1="700" x2="1550" y2="700" stroke="#dee2e6" stroke-width="1"/>
+
+    <text x="50" y="725" font-size="15" font-weight="700" fill="#2B579A" font-family="Microsoft YaHei, sans-serif">核心功能内部逻辑</text>
+
+    <!-- find_maniac -->
+    <g transform="translate(50, 740)">
+      <rect x="0" y="0" width="270" height="24" rx="4" fill="url(#gBlue)"/>
+      <text x="135" y="16" text-anchor="middle" font-size="11" font-weight="700" fill="#fff" font-family="Microsoft YaHei, sans-serif">① find_maniac()</text>
+      <rect x="65" y="36" width="140" height="28" rx="4" fill="url(#gGreen)" stroke="#82B366" stroke-width="1"/>
+      <text x="135" y="54" text-anchor="middle" font-size="10" fill="#2c3e50" font-family="Microsoft YaHei, sans-serif">count_calls()</text>
+      <rect x="65" y="75" width="140" height="28" rx="4" fill="url(#gGreen)" stroke="#82B366" stroke-width="1"/>
+      <text x="135" y="93" text-anchor="middle" font-size="10" fill="#2c3e50" font-family="Microsoft YaHei, sans-serif">遍历找最大 call_count</text>
+      <rect x="65" y="114" width="140" height="28" rx="4" fill="url(#gGreen)" stroke="#82B366" stroke-width="1"/>
+      <text x="135" y="132" text-anchor="middle" font-size="10" fill="#2c3e50" font-family="Microsoft YaHei, sans-serif">输出: 手机号/姓名/次数</text>
+      <line x1="135" y1="24" x2="135" y2="36" stroke="#333" stroke-width="1" marker-end="url(#arrow)"/>
+      <line x1="135" y1="64" x2="135" y2="75" stroke="#333" stroke-width="1" marker-end="url(#arrow)"/>
+      <line x1="135" y1="103" x2="135" y2="114" stroke="#333" stroke-width="1" marker-end="url(#arrow)"/>
+    </g>
+
+    <!-- find_by_name -->
+    <g transform="translate(350, 740)">
+      <rect x="0" y="0" width="280" height="24" rx="4" fill="url(#gBlue)"/>
+      <text x="140" y="16" text-anchor="middle" font-size="11" font-weight="700" fill="#fff" font-family="Microsoft YaHei, sans-serif">② find_by_name()</text>
+      <rect x="75" y="36" width="140" height="28" rx="4" fill="url(#gGreen)" stroke="#82B366" stroke-width="1"/>
+      <text x="145" y="54" text-anchor="middle" font-size="10" fill="#2c3e50" font-family="Microsoft YaHei, sans-serif">ch_find_name() 哈希查找</text>
+      <polygon points="145,76 205,100 145,124 85,100" fill="url(#gYellow)" stroke="#C9A831" stroke-width="1"/>
+      <text x="145" y="103" text-anchor="middle" font-size="9.5" fill="#2c3e50" font-family="Microsoft YaHei, sans-serif">找到?</text>
+      <rect x="200" y="132" width="75" height="24" rx="4" fill="#FFCDD2" stroke="#E57373" stroke-width="0.8"/>
+      <text x="238" y="148" text-anchor="middle" font-size="9" fill="#c62828" font-family="Microsoft YaHei, sans-serif">No Info</text>
+      <rect x="60" y="132" width="140" height="28" rx="4" fill="url(#gGreen)" stroke="#82B366" stroke-width="1"/>
+      <text x="130" y="150" text-anchor="middle" font-size="10" fill="#2c3e50" font-family="Microsoft YaHei, sans-serif">输出客户信息+通话明细</text>
+      <line x1="145" y1="24" x2="145" y2="36" stroke="#333" stroke-width="1" marker-end="url(#arrow)"/>
+      <line x1="145" y1="64" x2="145" y2="76" stroke="#333" stroke-width="1" marker-end="url(#arrow)"/>
+      <path d="M 205,100 L 230,100 L 230,132 L 238,132" fill="none" stroke="#333" stroke-width="1" marker-end="url(#arrow)"/>
+      <text x="215" y="94" font-size="9" fill="#c0392b" font-family="Microsoft YaHei, sans-serif">否</text>
+      <line x1="145" y1="124" x2="145" y2="132" stroke="#333" stroke-width="1" marker-end="url(#arrow)"/>
+      <text x="125" y="130" font-size="9" fill="#27ae60" font-family="Microsoft YaHei, sans-serif">是</text>
+    </g>
+
+    <!-- compare_hash_functions -->
+    <g transform="translate(680, 740)">
+      <rect x="0" y="0" width="290" height="24" rx="4" fill="url(#gBlue)"/>
+      <text x="145" y="16" text-anchor="middle" font-size="11" font-weight="700" fill="#fff" font-family="Microsoft YaHei, sans-serif">③ compare_hash_functions()</text>
+      <rect x="50" y="36" width="190" height="28" rx="4" fill="url(#gGreen)" stroke="#82B366" stroke-width="1"/>
+      <text x="145" y="54" text-anchor="middle" font-size="10" fill="#2c3e50" font-family="Microsoft YaHei, sans-serif">build_phone_oa() 两种哈希函数</text>
+      <rect x="50" y="75" width="190" height="28" rx="4" fill="url(#gGreen)" stroke="#82B366" stroke-width="1"/>
+      <text x="145" y="93" text-anchor="middle" font-size="10" fill="#2c3e50" font-family="Microsoft YaHei, sans-serif">输出手机号冲突数/冲突率</text>
+      <rect x="50" y="114" width="190" height="28" rx="4" fill="url(#gGreen)" stroke="#82B366" stroke-width="1"/>
+      <text x="145" y="132" text-anchor="middle" font-size="10" fill="#2c3e50" font-family="Microsoft YaHei, sans-serif">build_name_oa() 两种哈希函数</text>
+      <rect x="50" y="153" width="190" height="28" rx="4" fill="url(#gGreen)" stroke="#82B366" stroke-width="1"/>
+      <text x="145" y="171" text-anchor="middle" font-size="10" fill="#2c3e50" font-family="Microsoft YaHei, sans-serif">输出姓名冲突数/冲突率</text>
+      <line x1="145" y1="24" x2="145" y2="36" stroke="#333" stroke-width="1" marker-end="url(#arrow)"/>
+      <line x1="145" y1="64" x2="145" y2="75" stroke="#333" stroke-width="1" marker-end="url(#arrow)"/>
+      <line x1="145" y1="103" x2="145" y2="114" stroke="#333" stroke-width="1" marker-end="url(#arrow)"/>
+      <line x1="145" y1="142" x2="145" y2="153" stroke="#333" stroke-width="1" marker-end="url(#arrow)"/>
+    </g>
+
+    <!-- compare_collision_methods -->
+    <g transform="translate(1020, 740)">
+      <rect x="0" y="0" width="310" height="24" rx="4" fill="url(#gBlue)"/>
+      <text x="155" y="16" text-anchor="middle" font-size="11" font-weight="700" fill="#fff" font-family="Microsoft YaHei, sans-serif">④ compare_collision_methods()</text>
+      <rect x="50" y="36" width="210" height="28" rx="4" fill="url(#gGreen)" stroke="#82B366" stroke-width="1"/>
+      <text x="155" y="54" text-anchor="middle" font-size="10" fill="#2c3e50" font-family="Microsoft YaHei, sans-serif">build_phone_oa + build_phone_ch</text>
+      <rect x="50" y="75" width="210" height="28" rx="4" fill="url(#gGreen)" stroke="#82B366" stroke-width="1"/>
+      <text x="155" y="93" text-anchor="middle" font-size="10" fill="#2c3e50" font-family="Microsoft YaHei, sans-serif">输出: 线性探测 vs 链地址 ASL</text>
+      <rect x="50" y="114" width="210" height="28" rx="4" fill="url(#gGreen)" stroke="#82B366" stroke-width="1"/>
+      <text x="155" y="132" text-anchor="middle" font-size="10" fill="#2c3e50" font-family="Microsoft YaHei, sans-serif">build_name_oa + build_name_ch</text>
+      <rect x="50" y="153" width="210" height="28" rx="4" fill="url(#gGreen)" stroke="#82B366" stroke-width="1"/>
+      <text x="155" y="171" text-anchor="middle" font-size="10" fill="#2c3e50" font-family="Microsoft YaHei, sans-serif">输出: 线性探测 vs 链地址 ASL</text>
+      <line x1="155" y1="24" x2="155" y2="36" stroke="#333" stroke-width="1" marker-end="url(#arrow)"/>
+      <line x1="155" y1="64" x2="155" y2="75" stroke="#333" stroke-width="1" marker-end="url(#arrow)"/>
+      <line x1="155" y1="103" x2="155" y2="114" stroke="#333" stroke-width="1" marker-end="url(#arrow)"/>
+      <line x1="155" y1="142" x2="155" y2="153" stroke="#333" stroke-width="1" marker-end="url(#arrow)"/>
+    </g>
+
+    <!-- 数据结构说明框 -->
+    <g transform="translate(1380, 740)">
+      <rect x="0" y="0" width="195" height="165" rx="4" fill="#F5F5F5" stroke="#BDBDBD" stroke-width="1"/>
+      <text x="98" y="20" text-anchor="middle" font-size="11" font-weight="700" fill="#333" font-family="Microsoft YaHei, sans-serif">📦 核心数据结构</text>
+      <text x="12" y="40" font-size="9.5" fill="#555" font-family="Consolas, sans-serif">Customer {name, id,</text>
+      <text x="12" y="55" font-size="9.5" fill="#555" font-family="Consolas, sans-serif">  phone, call_count}</text>
+      <text x="12" y="78" font-size="9.5" fill="#555" font-family="Consolas, sans-serif">OASlot {valid, cust_idx}</text>
+      <text x="12" y="100" font-size="9.5" fill="#555" font-family="Consolas, sans-serif">ChainNode {cust_idx, *next}</text>
+      <line x1="10" y1="112" x2="185" y2="112" stroke="#E0E0E0" stroke-width="0.5"/>
+      <text x="98" y="130" text-anchor="middle" font-size="10" font-weight="700" fill="#333" font-family="Microsoft YaHei, sans-serif">🔑 哈希函数</text>
+      <text x="12" y="147" font-size="9" fill="#555" font-family="Microsoft YaHei, sans-serif">除留余数: key % size</text>
+      <text x="12" y="160" font-size="9" fill="#555" font-family="Microsoft YaHei, sans-serif">折叠法: 分3段相加取模</text>
+    </g>
+
+  </svg>
+</div>
+</body>
+</html>
