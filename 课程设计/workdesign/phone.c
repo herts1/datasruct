@@ -19,7 +19,7 @@ ChainNode *name_ch[NAME_TABLE_SIZE];
 static unsigned long phone_to_ul(const char *phone) {
     unsigned long v = 0;
     for (int i = 0; i < 11 && phone[i]; i++)
-        v = v * 10 + (phone[i] - '0');
+        v = v * 10 + (phone[i] - '0');     //计算完整的电话号码 
     return v;
 }
 
@@ -32,7 +32,7 @@ static int hash_div_phone(const char *phone, int size) {
 static int hash_div_name(const char *name, int size) {
     unsigned long v = 0;
     for (int i = 0; name[i]; i++)
-        v = v * 31 + (unsigned char)name[i];
+        v = v * 31 + (unsigned char)name[i];   //31 是一个奇素数，能被编译器优化为 (x << 5) - x，在保证哈希分布的同时具有极高的计算效率，因此被广泛用于字符串哈希。 
     return (int)(v % (unsigned long)size);
 }
 
@@ -42,9 +42,9 @@ static int hash_fold_phone(const char *phone, int size) {
     strncpy(buf, phone, 11);
     buf[11] = '\0';
     unsigned long p1 = 0, p2 = 0, p3 = 0;
-    for (int i = 0; i < 3 && buf[i]; i++) p1 = p1 * 10 + (buf[i] - '0');
-    for (int i = 3; i < 7 && buf[i]; i++) p2 = p2 * 10 + (buf[i] - '0');
-    for (int i = 7; i < 11 && buf[i]; i++) p3 = p3 * 10 + (buf[i] - '0');
+    for (int i = 0; i < 3 && buf[i]; i++) p1 = p1 * 10 + (buf[i] - '0');      // 前三位 
+    for (int i = 3; i < 7 && buf[i]; i++) p2 = p2 * 10 + (buf[i] - '0');      // 中四位 
+    for (int i = 7; i < 11 && buf[i]; i++) p3 = p3 * 10 + (buf[i] - '0');     // 后四位 
     return (int)((p1 + p2 + p3) % (unsigned long)size);
 }
 
@@ -54,13 +54,13 @@ static int hash_fold_name(const char *name, int size) {
     for (int i = 0; i < len; i += 4) {
         unsigned long chunk = 0;
         for (int j = i; j < i + 4 && j < len; j++)
-            chunk = chunk * 256 + (unsigned char)name[j];
+            chunk = chunk * 256 + (unsigned char)name[j];   //每个字符占一个“数位” 
         sum += chunk;
     }
     return (int)(sum % (unsigned long)size);
 }
 
-/* 统一入口 */
+/* 统一入口 */ //----------用同一个函数，根据 htype决定使用“除留余数法”还是“折叠法” 
 static int hash_phone(const char *phone, int size, int htype) {
     return htype == HASH_DIV ? hash_div_phone(phone, size)
                              : hash_fold_phone(phone, size);
@@ -69,6 +69,9 @@ static int hash_name(const char *name, int size, int htype) {
     return htype == HASH_DIV ? hash_div_name(name, size)
                              : hash_fold_name(name, size);
 }
+
+
+//因为手机号和姓名的取值分布不同，分别设计哈希函数可以获得更好的冲突分布；同时通过统一入口屏蔽差异，既保证了灵活性，又保持了接口简洁 
 
 /* ===================== 文件读取 ===================== */
 
