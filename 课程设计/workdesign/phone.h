@@ -78,7 +78,7 @@ static int hash_fold_phone(const char *phone, int size);  //折叠法-电话号码
 static int hash_fold_name(const char *name, int size);    //折叠法-名字
 
 
-//统一： 
+//统一：通过htype选择哈希码创建方式 
 static int hash_phone(const char *phone, int size, int htype);
 static int hash_name(const char *name, int size, int htype);
 

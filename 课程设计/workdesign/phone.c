@@ -121,13 +121,13 @@ void oa_init(OASlot *table, int size) {
     for (int i = 0; i < size; i++) table[i].valid = 0;
 }
 
-/* 插入，返回探测次数 */
+/* 插入，返回探测次数 */  
 int oa_insert_phone(OASlot *table, int size, int cust_idx, int htype) {
     int h = hash_phone(customers[cust_idx].phone, size, htype);
     int probe = 1;
     for (int step = 0; step < size; step++, probe++) {
         int pos = (h + step) % size;
-        if (table[pos].valid != 1) {
+        if (table[pos].valid != 1) {      //判断是否已经存储索引数据，如有，则继续递增直到找到地址为0的位置 
             table[pos].valid = 1;
             table[pos].cust_idx = cust_idx;
             return probe;
@@ -178,7 +178,7 @@ int oa_find_name(OASlot *table, int size, const char *name, int htype) {
 
 /* ===================== 链地址哈希表 ===================== */
 
-void ch_init(ChainNode **table, int size) {
+void ch_init(ChainNode **table, int size) {    //初始化链表 
     for (int i = 0; i < size; i++) table[i] = NULL;
 }
 
@@ -201,7 +201,7 @@ int ch_insert_phone(ChainNode **table, int size, int cust_idx, int htype) {
     ChainNode *p = table[h];
     while (p) { len++; p = p->next; }
     return len;
-}
+}//计算冲突次数 
 
 int ch_insert_name(ChainNode **table, int size, int cust_idx, int htype) {
     int h = hash_name(customers[cust_idx].name, size, htype);
@@ -359,7 +359,7 @@ void compare_hash_functions(void) {
            100.0 * sn_fold.collisions / sn_fold.inserted);
 }
 
-/* 功能5：平均查找长度比较 */
+/* 功能5：平均查找长度比较 */        //ASL 越小，冲突越少、性能越好 
 void compare_collision_methods(void) {
     printf("\n====== 冲突处理方法对比（ASL）======\n");
     printf("哈希函数=除留余数法，数据量=%d\n\n", cust_cnt);
@@ -411,7 +411,7 @@ void print_menu(void) {
     printf("+----------------------------------------+\n");
     printf("|   电话[聊天狂人]查询系统               |\n");
     printf("+----------------------------------------+\n");
-    printf("|  1. 查询[聊天狂人](通话次数最多者)    |\n");
+    printf("|  1. 查询[聊天狂人](通话次数最多者)     |\n");
     printf("|  2. 按姓名查询用户信息与通话记录       |\n");
     printf("|  3. 按手机号查询用户信息               |\n");
     printf("|  4. 比较两种哈希函数的冲突率           |\n");

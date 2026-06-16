@@ -4,7 +4,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 
-
+//哈希表索引查找，下标cust_idx, 
 
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 
