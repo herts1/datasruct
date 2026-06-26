@@ -77,7 +77,7 @@ int load_customers(const char *filename) {
     FILE *fp = fopen(filename, "r");
     if (!fp) { printf("无法打开 %s\n", filename); return -1; }
     cust_cnt = 0;
-    while (cust_cnt < MAX_CUSTOMERS &&                  //判断文件是否同时含有名字，身份证号码，电话号码三类信息 
+    while (cust_cnt < MAX_CUSTOMERS &&                  //判断文件是否同时含有名字，身份证号码，电话号码三类信息 && 对 customers【】进行填入 
            fscanf(fp, "%31s %18s %11s",customers[cust_cnt].name,customers[cust_cnt].id,customers[cust_cnt].phone) == 3) {
         customers[cust_cnt].call_count = 0;
         cust_cnt++;
@@ -243,9 +243,9 @@ HashStats build_phone_oa(OASlot *table, int size, int htype) {
     HashStats s = {0, 0, 0};
     for (int i = 0; i < cust_cnt; i++) {
         int probe = oa_insert_phone(table, size, i, htype);
-        s.total_probe += probe;
-        if (probe > 1) s.collisions++;
-        s.inserted++;
+        s.total_probe += probe;               //计算总探测次数 
+        if (probe > 1) s.collisions++;        //计算冲突个数 
+        s.inserted++;                         //递增成功插入个数 
     }
     return s;
 }

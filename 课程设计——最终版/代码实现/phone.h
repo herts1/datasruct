@@ -47,7 +47,7 @@ typedef struct {
      struct ChainNode *next;
  } ChainNode;
 
-/*  只声明，不定义 */
+/* ? 只声明，不定义 */
 extern Customer customers[MAX_CUSTOMERS];
 extern int      cust_cnt;
 
